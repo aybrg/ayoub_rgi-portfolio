@@ -1,0 +1,133 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Dark-only design system for the Ayoub Rougui portfolio.
+ * Accent (#00FF08) is reserved for CTAs, active states and hover highlights.
+ * Deep violet (#140174) is used exclusively for atmospheric gradients/glows.
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+  --color-neon: var(--neon);
+  --color-neon-foreground: var(--neon-foreground);
+  --color-nebula: var(--nebula);
+  --color-surface: var(--surface);
+  --font-display: "Space Grotesk", "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+:root {
+  color-scheme: dark;
+  --radius: 0.75rem;
+  /* Fallback until Navbar measures its real height + top gap. */
+  --nav-offset: 6.5rem;
+
+  --background: oklch(0.145 0.012 275);
+  --foreground: oklch(0.97 0.005 275);
+  --surface: oklch(0.19 0.018 275);
+  --card: oklch(0.19 0.018 275);
+  --card-foreground: oklch(0.97 0.005 275);
+  --popover: oklch(0.17 0.016 275);
+  --popover-foreground: oklch(0.97 0.005 275);
+
+  /* #00FF08 */
+  --neon: oklch(0.867 0.294 142.5);
+  --neon-foreground: oklch(0.13 0.02 150);
+  /* #140174 */
+  --nebula: oklch(0.26 0.19 285);
+
+  --primary: oklch(0.867 0.294 142.5);
+  --primary-foreground: oklch(0.13 0.02 150);
+  --secondary: oklch(0.24 0.02 275);
+  --secondary-foreground: oklch(0.97 0.005 275);
+  --muted: oklch(0.24 0.02 275);
+  --muted-foreground: oklch(0.68 0.014 275);
+  --accent: oklch(0.28 0.05 285);
+  --accent-foreground: oklch(0.97 0.005 275);
+  --destructive: oklch(0.62 0.22 25);
+  --destructive-foreground: oklch(0.98 0.005 275);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 14%);
+  --ring: oklch(0.867 0.294 142.5);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    /* Matches the floating navbar height (measured at runtime in Navbar.tsx). */
+    scroll-padding-top: var(--nav-offset);
+  }
+
+  :where(section[id], [data-section-anchor]) {
+    scroll-margin-top: var(--nav-offset);
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection {
+    background-color: color-mix(in oklab, var(--neon) 35%, transparent);
+    color: var(--foreground);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+}
+
+@utility grain {
+  position: relative;
+  &::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 60;
+    pointer-events: none;
+    opacity: 0.045;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+}
+
+@utility text-balance-tight {
+  text-wrap: balance;
+}
