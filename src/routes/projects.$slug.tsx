@@ -92,6 +92,18 @@ function ProjectCaseStudy() {
           ))}
         </Reveal>
 
+        {project.image && (
+          <Reveal delay={0.1}>
+            <div className="mt-16 overflow-hidden rounded-2xl border border-white/10 bg-white/5 shadow-2xl">
+              <img
+                src={project.image}
+                alt={`${project.title} Preview`}
+                className="w-full h-auto object-cover"
+              />
+            </div>
+          </Reveal>
+        )}
+
         <div className="mt-20 space-y-14">
           {blocks.map((block, i) => (
             <Reveal key={block.label} delay={i * 0.05}>

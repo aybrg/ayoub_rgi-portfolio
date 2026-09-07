@@ -41,11 +41,18 @@ export function Projects() {
             {/* Project Image Container */}
             <div className={`lg:col-span-7 relative aspect-[16/10] rounded-2xl overflow-hidden bg-white/5 border border-white/10 group-hover:border-[#00FF08]/50 transition-colors duration-500 shadow-2xl group-hover:shadow-[0_0_40px_-15px_rgba(0,255,8,0.3)] ${index % 2 !== 0 ? 'lg:order-last' : ''}`}>
               <div className="absolute inset-0 bg-gradient-to-t from-[#140174]/40 to-transparent z-10 mix-blend-overlay" />
-              
-              {/* Replace this div with an actual <img src={project.image} /> when you have screenshots */}
-              <div className="w-full h-full bg-[#0a0a0a] flex items-center justify-center text-white/20 group-hover:scale-105 transition-transform duration-700 ease-out">
-                <span className="text-2xl font-mono">{project.title} Preview</span>
-              </div>
+
+              {project.image ? (
+                <img
+                  src={project.image}
+                  alt={`${project.title} Preview`}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                />
+              ) : (
+                <div className="w-full h-full bg-[#0a0a0a] flex items-center justify-center text-white/20 group-hover:scale-105 transition-transform duration-700 ease-out">
+                  <span className="text-2xl font-mono">{project.title} Preview</span>
+                </div>
+              )}
             </div>
 
             {/* Project Info */}
@@ -62,8 +69,8 @@ export function Projects() {
 
               <div className="flex flex-wrap gap-3 mb-10">
                 {project.tech.map((tech) => (
-                  <span 
-                    key={tech} 
+                  <span
+                    key={tech}
                     className="px-4 py-1.5 rounded-full text-xs font-mono tracking-wide bg-white/5 text-white/80 border border-white/10 group-hover:border-white/20 transition-colors"
                   >
                     {tech}
@@ -82,9 +89,9 @@ export function Projects() {
                 </Link>
 
                 {project.liveUrl && (
-                  <a 
-                    href={project.liveUrl} 
-                    target="_blank" 
+                  <a
+                    href={project.liveUrl}
+                    target="_blank"
                     rel="noreferrer"
                     className="text-white/50 hover:text-white transition-colors text-sm font-mono"
                   >
@@ -92,9 +99,9 @@ export function Projects() {
                   </a>
                 )}
                 {project.githubUrl && (
-                  <a 
-                    href={project.githubUrl} 
-                    target="_blank" 
+                  <a
+                    href={project.githubUrl}
+                    target="_blank"
                     rel="noreferrer"
                     className="text-white/50 hover:text-white transition-colors text-sm font-mono"
                   >

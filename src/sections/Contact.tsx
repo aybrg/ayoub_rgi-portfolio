@@ -1,5 +1,5 @@
 import { motion, Variants } from "framer-motion";
-import { Mail, Phone, Github, Globe } from "lucide-react";
+import { Mail, Phone, Github, Globe, Linkedin, MessageCircle } from "lucide-react";
 import { MagneticButton } from "../components/MagneticButton";
 
 export function Contact() {
@@ -27,10 +27,10 @@ export function Contact() {
 
     const contacts = [
         {
-            icon: <Phone className="size-6" />,
-            label: "Phone",
-            value: "06 80 26 13 02",
-            href: "tel:+212680261302"
+            icon: <MessageCircle className="size-6" />,
+            label: "WhatsApp",
+            value: "+212 68 02 61 302",
+            href: "https://wa.me/212680261302"
         },
         {
             icon: <Mail className="size-6" />,
@@ -45,10 +45,10 @@ export function Contact() {
             href: "https://github.com/aybrg"
         },
         {
-            icon: <Globe className="size-6" />,
-            label: "Portfolio",
-            value: "rougui-glow-folio-main.vercel.app",
-            href: "https://rougui-glow-folio-main.vercel.app/"
+            icon: <Linkedin className="size-6" />,
+            label: "LinkedIn",
+            value: "Ayoub Rougui",
+            href: "https://www.linkedin.com/in/ayoub-rougui-92a532310/"
         }
     ];
 

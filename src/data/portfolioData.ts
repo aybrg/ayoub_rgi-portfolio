@@ -11,6 +11,7 @@ export type Project = {
     solution: string;
     architecture: string;
   };
+  image?: string;
 };
 
 export type Experience = {
@@ -48,40 +49,55 @@ export const experience: Experience[] = [
 
 export const projects: Project[] = [
   {
-    slug: "smart-attendance-system",
-    title: "Smart Attendance System (S.A.S)",
-    type: "Full-Stack Web Application",
-    tech: ["Laravel", "React", "Dynamic QR Codes"],
+    slug: "librax-platform",
+    title: "LibraX – Digital Resource & Automation Platform",
+    type: "Backend Architecture & Task Queues",
+    tech: [
+      "Django",
+      "Python",
+      "Celery",
+      "Redis",
+      "MySQL"
+    ],
     description:
-      "An automated attendance and document analysis platform utilizing dynamic QR code verification.",
+      "A high-performance digital resource management system built for my academic soutenance, utilizing distributed task queues to handle heavy background processing.",
     liveUrl: "",
     githubUrl: "",
     caseStudy: {
       problem:
-        "Manual attendance tracking and paper document handling created fraud risk, long queues and no reliable audit trail for administrators.",
+        "Traditional resource platforms suffer from synchronous blocking during heavy operations—such as sending bulk email notifications for due dates, generating PDF reports, or processing large datasets—which freezes the user interface.",
       solution:
-        "A dynamic QR code engine that rotates tokens on a short interval, paired with a document analysis pipeline that validates and archives submissions automatically.",
+        "Decoupled resource-intensive tasks from the main request-response cycle. Implemented a distributed task queue to handle automated reminders and data processing asynchronously, ensuring a zero-latency, seamless user experience.",
       architecture:
-        "Laravel REST API with signed, time-boxed QR tokens; React client for scanning and dashboards; MySQL for sessions, attendance records and document metadata.",
+        "Built on a robust Python/Django core with optimized ORM queries. Redis acts as both a rapid cache and a message broker for Celery workers, while MySQL ensures ACID-compliant relational data management."
     },
+    image: "/Capture d'écran 2026-08-31 194645.png",
   },
   {
     slug: "boardsland-platform",
-    title: "BoardsLand Platform",
-    type: "Full-Stack E-commerce & Artist Portal",
-    tech: ["React", "Laravel", "REST API", "MySQL"],
+    title: "BoardsLand – Custom Skateboard & Art Marketplace",
+    type: "Full-Stack E-commerce & Marketplace",
+    tech: [
+      "React.js",
+      "Vite",
+      "Tailwind CSS",
+      "Framer Motion",
+      "Laravel",
+      "MySQL",
+    ],
     description:
-      "A modern web platform and artist portal with secure server authentication and automated remote repository backups.",
+      "A modern e-commerce and marketplace platform dedicated to custom skateboards and independent artists with dynamic pricing and real-time customization.",
     liveUrl: "",
     githubUrl: "",
     caseStudy: {
       problem:
-        "Artists needed a self-service portal to publish and sell work, while the business needed a hardened storefront with dependable backups.",
+        "Bridging the gap between urban street culture and digital art required a scalable platform where users could customize board dimensions while artists could safely sell exclusive artworks.",
       solution:
-        "A decoupled storefront plus a role-based artist portal, with secure server authentication and scheduled automated backups to a remote repository.",
+        "Developed a dual-role ecosystem for shoppers and artists, featuring a custom commission engine, dynamic pricing calculations based on board dimensions, and stringent Role-Based Access Control.",
       architecture:
-        "React SPA consuming a Laravel REST API, MySQL persistence, token-based auth with role guards, and cron-driven backup jobs pushing to remote storage.",
+        "React.js and Vite frontend with Framer Motion UI effects. Laravel (PHP 8.x) backend exposing a REST API secured by Sanctum, using MySQL and local/cloud storage for base64 design uploads.",
     },
+    image: "/boardsland.png",
   },
   {
     slug: "headless-ecommerce-redesign",
@@ -100,24 +116,7 @@ export const projects: Project[] = [
       architecture:
         "Magento 2.4.7 as the commerce core exposed through its REST/GraphQL APIs, a React presentation layer, and scripted bulk product ingestion jobs.",
     },
-  },
-  {
-    slug: "casa-creations",
-    title: "Casa Creations",
-    type: "SMMA Management Platform",
-    tech: ["Laravel", "PHP", "MySQL", "Bootstrap"],
-    description:
-      "A complete platform designed to manage clients, services, freelancers, orders, and tasks for an SMMA agency.",
-    liveUrl: "",
-    githubUrl: "",
-    caseStudy: {
-      problem:
-        "Agency operations were spread across spreadsheets and chat, so order status, freelancer workload and client deliverables were impossible to track.",
-      solution:
-        "A single operations platform modelling clients, services, freelancers, orders and tasks with clear ownership and status flows.",
-      architecture:
-        "Laravel MVC application with Eloquent models for each domain entity, MySQL relational schema, Bootstrap admin interface and role-scoped access.",
-    },
+    image: "/headless-ecommerce-mockup.png",
   },
   {
     slug: "whatsapp-chatbot-automation",
@@ -136,6 +135,7 @@ export const projects: Project[] = [
       architecture:
         "Event-driven architecture using WhatsApp Cloud API webhooks connected to n8n workflows, integrated with an LLM for intent recognition, and storing conversation states in a database.",
     },
+    image: "/whatsapp-chatbot-mockup.png",
   },
 ];
 
